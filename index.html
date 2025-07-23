@@ -1,0 +1,66 @@
+<div id="ar-container">
+  <a id="ar-link" href="https://raw.githubusercontent.com/DemonstrationProjects/ARDemoQuick/main/Character.usdz" rel="ar" class="App-mobile">
+    <img src="Preview.png" class="App-mobile-preview">
+    <button class="App-button">Посмотреть</button>
+  </a>
+</div>
+
+<style>
+  .App-mobile {
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .App-ar-icon {
+    height: 25px;
+    padding-right: 10px;
+  }
+  .App-mobile-preview {
+    height: 50vh;
+    margin-bottom: 0px;
+  }
+  .App-button {
+    padding: 16px 24px;
+    font-size: 1.2rem;
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 320px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+  }
+  .App-button:hover {
+    background-color: #005fcc;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const isAndroid = /Android/.test(navigator.userAgent);
+
+    const arLink = document.getElementById("ar-link");
+
+    if (isIOS) {
+      arLink.setAttribute("href", "https://raw.githubusercontent.com/DemonstrationProjects/ARDemoQuick/main/Character.usdz");
+      arLink.setAttribute("rel", "ar");
+    } else if (isAndroid) {
+      const sceneViewerUrl = "https://arvr.google.com/scene-viewer/1.0";
+      const glbUrl = encodeURIComponent("https://raw.githubusercontent.com/DemonstrationProjects/ARDemoQuick/main/Character.glb");
+      const intentUrl = `${sceneViewerUrl}?file=${glbUrl}&mode=ar_preferred&link=${location.href}`;
+
+      arLink.setAttribute("href", intentUrl);
+      arLink.removeAttribute("rel");
+    } else {
+      console.log("AR доступно только на мобильных устройствах.");
+    }
+  });
+</script>
