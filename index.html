@@ -1,5 +1,5 @@
 <div id="ar-container">
-  <a id="ar-link" href="https://raw.githubusercontent.com/DemonstrationProjects/ARDemoQuick/main/Character.usdz" rel="ar" class="App-mobile">
+  <a id="ar-link" href="https://raw.githubusercontent.com/DemonstrationProjects/ARDemoQuikLowPoly/main/Character.usdz" rel="ar" class="App-mobile">
     <img src="Preview.png" class="App-mobile-preview">
     <button class="App-button">Посмотреть</button>
   </a>
@@ -50,11 +50,11 @@
     const arLink = document.getElementById("ar-link");
 
     if (isIOS) {
-      arLink.setAttribute("href", "https://raw.githubusercontent.com/DemonstrationProjects/ARDemoQuick/main/Character.usdz");
+      arLink.setAttribute("href", "https://raw.githubusercontent.com/DemonstrationProjects/ARDemoQuikLowPoly/main/Character.usdz");
       arLink.setAttribute("rel", "ar");
     } else if (isAndroid) {
       const sceneViewerUrl = "https://arvr.google.com/scene-viewer/1.0";
-      const glbUrl = encodeURIComponent("https://raw.githubusercontent.com/DemonstrationProjects/ARDemoQuick/main/Character.glb");
+      const glbUrl = encodeURIComponent("https://raw.githubusercontent.com/DemonstrationProjects/ARDemoQuikLowPoly/main/Character.glb");
       const intentUrl = `${sceneViewerUrl}?file=${glbUrl}&mode=ar_preferred&link=${location.href}`;
 
       arLink.setAttribute("href", intentUrl);
